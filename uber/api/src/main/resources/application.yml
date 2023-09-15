@@ -1,0 +1,22 @@
+server:
+  port : 9000
+
+eureka:
+  instance:
+    hostname: localhost
+
+spring:
+  application:
+    name: uber-api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: customer-service
+          uri: lb://customer-service
+          predicates:
+            - Path=/customer-service/**,/customer/service/customer/**
+
+        - id: driver-service
+          uri: lb://driver-service
+          predicates:
+            - Path=/driver-service/**,/driver-service/driver/**
