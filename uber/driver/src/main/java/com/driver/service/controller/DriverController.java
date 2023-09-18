@@ -1,24 +1,29 @@
 package com.driver.service.controller;
 
 import com.driver.service.dto.DriverDTO;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.driver.service.entity.Driver;
+import com.driver.service.service.DriverService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RequestMapping("/driver")
 @RestController
+@RequiredArgsConstructor
 public class DriverController {
 
+    private final DriverService driverService;
+
     @GetMapping("/get-all")
-    public List<DriverDTO> getAllAvailableDrivers(){
-        return List.of(
-                new DriverDTO(1L,"Rabi Achakzai","090078601"),
-                new DriverDTO(2L,"Rizwan Nurmagomedov","090078601"),
-                new DriverDTO(3L,"Monis GPT5","090078601"),
-                new DriverDTO(4L,"Armanullah Khalili","090078601")
-        );
+    public List<Driver> getAllAvailableDrivers(){
+        return driverService.getAllDrivers();
+    }
+
+    @PostMapping
+    public Driver addDriver(@RequestBody DriverDTO driverDTO){
+        return driverService.saveDriver(driverDTO);
     }
 
 }

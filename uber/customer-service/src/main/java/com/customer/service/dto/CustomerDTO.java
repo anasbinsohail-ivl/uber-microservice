@@ -1,13 +1,11 @@
-package com.driver.service.dto;
+package com.customer.service.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
-public class DriverDTO {
+public class CustomerDTO {
     private String fullName;
     private String mobile;
 }

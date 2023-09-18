@@ -14,9 +14,9 @@ spring:
         - id: customer-service
           uri: lb://customer-service
           predicates:
-            - Path=/customer-service/**,/customer/service/customer/**
+            - Path=/customer/**
 
         - id: driver-service
           uri: lb://driver-service
           predicates:
-            - Path=/driver-service/**,/driver-service/driver/**
+            - Path=/driver/**
